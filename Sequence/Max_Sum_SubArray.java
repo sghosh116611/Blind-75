@@ -13,3 +13,6 @@ public class Max_Sum_SubArray {
         return maxSum;
     }
 }
+
+// Note 
+// 1. Use kadane's algorithm to find the maxSum till a point
