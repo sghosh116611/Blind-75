@@ -45,8 +45,8 @@ public class Valid_Parenthesis {
 
 }
 
-Note
-1. Use stack > O(n) + O(n)
-a. Stack is empty while trying pop out
-b. Popped out char != Inserted Char
-c. Stack is not empty which means inserted != popped
+// Note
+// 1. Use stack > O(n) + O(n)
+// a. Stack is empty while trying pop out
+// b. Popped out char != Inserted Char
+// c. Stack is not empty which means inserted != popped
