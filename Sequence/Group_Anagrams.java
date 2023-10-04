@@ -3,6 +3,8 @@ package Sequence;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Group_Anagrams {
     public List<List<String>> groupAnagrams(String[] strs) {
