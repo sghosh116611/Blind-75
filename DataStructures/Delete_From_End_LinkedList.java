@@ -37,3 +37,7 @@ class ListNode {
         this.next = next;
     }
 }
+
+// Note
+
+// 1. We need to introduce a new pointer to point to head to handle the case when the first element needs to be removed
