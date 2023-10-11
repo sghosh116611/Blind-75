@@ -86,3 +86,8 @@ class Pair{
         this.j = j;
     }
 }
+
+// Note
+// 1. Perform BFS
+// 2. Check for every adjacent node 
+// 3. Edge case - Diagonal should only be counted if the next column's cell or next row's cell is a land
