@@ -47,3 +47,7 @@ public class Top_K_Frequent_Elements {
         return resArr;
     }
 }
+
+// Note
+// 1. Use bucket sort
+// 2. Use max heap
