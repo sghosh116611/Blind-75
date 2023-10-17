@@ -33,3 +33,16 @@ public class Construct_Tree_Inorder_PostOrder {
 
     }
 }
+
+// Note
+// 1. Left node will be determined :-
+// 		a. PreOrder Start -> PreStart + 1
+// 		b. PreOrder End ->  InOrder root idx - InorderStart
+// 		c. Inorder Start -> InStart
+// 		d. InOrder End -> InOrder root Idx - 1
+
+// 2. Right Node will be determined :-
+// 		a. PreOrder Start -> InOrder root Idx - InOrderStart + 1
+// 		b. PreOrder End -> PreEnd
+// 		c. InOrder Start -> InOrder rootIdx + 1
+// 		d. InOrder End -> InEnd
