@@ -49,23 +49,23 @@ class Trie {
 
 
 public class Node{
-    Node[] character;
+    Node[] children;
     boolean isEnd;
 
     Node(){
-        character = new Node[26];
+        children = new Node[26];
         isEnd = false;
     }
 
     boolean containsKey(char ch){
-        return character[ch - 'a'] != null;
+        return children[ch - 'a'] != null;
     }
 
     void put(char ch){
-        character[ch - 'a'] = new Node();
+        children[ch - 'a'] = new Node();
     }
 
     Node get(char ch){
-        return character[ch - 'a'];
+        return children[ch - 'a'];
     }
 }
