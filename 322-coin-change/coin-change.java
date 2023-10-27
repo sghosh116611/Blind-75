@@ -1,7 +1,6 @@
 class Solution {
     public int coinChange(int[] coins, int amount) {
         int n = coins.length;
-        Arrays.sort(coins);
         int[][] dp = new int[n][amount + 1];
         
         int result = fDPTabulation(n,amount,coins,dp);
