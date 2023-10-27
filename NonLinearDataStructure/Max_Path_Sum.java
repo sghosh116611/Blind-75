@@ -1,3 +1,5 @@
+package NonLinearDataStructure;
+
 public class Max_Path_Sum {
     int max = Integer.MIN_VALUE;
     public int maxPathSum(TreeNode root) {
