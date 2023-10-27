@@ -1,3 +1,4 @@
+package MoreDataStructure;
 class WordDictionary {
     Node root;
     public WordDictionary() {
