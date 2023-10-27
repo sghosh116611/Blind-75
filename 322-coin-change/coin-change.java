@@ -52,7 +52,6 @@ class Solution {
                 dp[0][i] = (int) Math.pow(10, 9);
         }
 
-        // Fill the dp array using dynamic programming
         for (int ind = 1; ind < n; ind++) {
             for (int target = 0; target <= amount; target++) {
                 int notTake = 0 + dp[ind - 1][target];
