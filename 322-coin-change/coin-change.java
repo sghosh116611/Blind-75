@@ -4,7 +4,7 @@ class Solution {
         Arrays.sort(coins);
         int[][] dp = new int[n][amount + 1];
         
-        int result = fDP(n - 1,amount,coins,dp);
+        int result = fDPTabulation(n,amount,coins,dp);
         if(result >= (int) Math.pow(10, 9))
             return -1;
         return result;
@@ -26,7 +26,7 @@ class Solution {
         return Math.min(notTake,take);
     }
 
-    private int fDP(int n, int amount, int[] coins, int[][] dp){
+    private int fDPMemoization(int n, int amount, int[] coins, int[][] dp){
         if(n == 0){
             if(amount % coins[0] == 0)
                 return amount / coins[0];
@@ -36,11 +36,34 @@ class Solution {
         if(dp[n][amount] != 0)
             return dp[n][amount];
         
-        int notTake = 0 + fDP(n - 1,amount,coins,dp);
+        int notTake = 0 + fDPMemoization(n - 1,amount,coins,dp);
         int take = (int) Math.pow(10, 9);
         if(coins[n] <= amount)
-            take = 1 + fDP(n, amount - coins[n],coins,dp);
+            take = 1 + fDPMemoization(n, amount - coins[n],coins,dp);
 
         return dp[n][amount] = Math.min(notTake,take);
+    }
+
+    private int fDPTabulation(int n, int amount, int[] coins, int[][] dp){
+        for (int i = 0; i <= amount; i++) {
+            if (i % coins[0] == 0)
+                dp[0][i] = i / coins[0];
+            else
+                dp[0][i] = (int) Math.pow(10, 9);
+        }
+
+        // Fill the dp array using dynamic programming
+        for (int ind = 1; ind < n; ind++) {
+            for (int target = 0; target <= amount; target++) {
+                int notTake = 0 + dp[ind - 1][target];
+                int take = (int) Math.pow(10, 9);
+
+                if (coins[ind] <= target)
+                    take = 1 + dp[ind][target - coins[ind]];
+
+                dp[ind][target] = Math.min(notTake, take);
+            }
+        }
+        return dp[n - 1][amount];
     }
 }
