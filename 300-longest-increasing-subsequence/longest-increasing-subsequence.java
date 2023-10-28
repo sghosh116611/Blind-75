@@ -2,12 +2,9 @@ class Solution {
     public int lengthOfLIS(int[] nums) {
         int n = nums.length;
 
-        int[][] dp = new int[n][n + 1];
-        for (int row[] : dp) {
-            Arrays.fill(row, -1);
-        }
+        int[][] dp = new int[n + 1][n + 1];
 
-        return fDPMemoization(0,-1,nums.length,nums,dp);
+        return fDPTabulation(nums.length,nums,dp);
     }
 
     public int f(int idx, int prev,int n, int[] arr){
@@ -35,5 +32,20 @@ class Solution {
             take = 1 + fDPMemoization(idx + 1,idx,n,arr,dp);
         }
         return dp[idx][prev + 1] = Math.max(take,notTake);
+    }
+
+    public int fDPTabulation(int n, int[] arr,int[][]dp){
+        for(int idx = n - 1; idx >= 0; idx--){
+            for(int prev = idx - 1; prev >= -1; prev--){
+                int notTake = dp[idx + 1][prev + 1];
+                int take = 0;
+                if(prev == -1 || arr[idx] > arr[prev]){
+                    take = 1 + dp[idx + 1][idx + 1];
+                }
+                dp[idx][prev + 1] = Math.max(take,notTake);
+            }
+        }
+        
+        return dp[0][-1 + 1];
     }
 }
