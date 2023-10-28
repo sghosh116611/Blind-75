@@ -1,4 +1,6 @@
-class Solution {
+package Dynamic_Programming;
+
+public class Longest_Increasing_Subsequence {
     public int lengthOfLIS(int[] nums) {
         int n = nums.length;
 
