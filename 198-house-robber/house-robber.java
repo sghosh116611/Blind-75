@@ -5,7 +5,8 @@ class Solution {
         Arrays.fill(dp,-1);
 
         //return fMemoization(nums.length - 1, nums,dp);
-        return fTabulation(nums.length - 1, nums,dp);
+        //return fTabulation(nums.length - 1, nums,dp);
+        return fTabulationSpaceOptimise(nums.length - 1, nums,dp);
     }
 
     public int f(int idx, int[] nums){
@@ -51,5 +52,25 @@ class Solution {
         }
 
         return dp[idx];
+    }
+
+    public int fTabulationSpaceOptimise(int idx, int[] nums, int[] dp){
+        int prev = nums[0];
+        int prev2 = 0;
+        int current = 0;
+
+        for(int i = 1; i <= idx; i++){
+            int notTake = 0 + prev;
+            
+            int take = nums[i];
+            if(i > 1)
+                take += prev2;
+            
+            current = Math.max(notTake,take);
+
+            prev2 = prev;
+            prev = current;
+        }
+        return prev;
     }
 }
