@@ -41,7 +41,9 @@ class Solution {
     public int fTabulation(int idx, String s, int[] dp){
         dp[s.length()] = 1;
         for(int i = s.length() - 1; i >= 0; i--){
-            if(s.charAt(i) != '0'){
+            if(s.charAt(i) == '0')
+                dp[i] = 0;
+            else{
                 int plusOne = dp[i + 1];
                 int plusTwo = 0;
                 if(i < s.length() - 1 && 
