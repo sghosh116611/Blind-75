@@ -5,7 +5,8 @@ class Solution {
 
         //return f(0,s);
         //return fMemoization(0,s,dp);
-        return fTabulation(0,s,dp);
+        //return fTabulation(0,s,dp);
+        return fTabulationConstantSpace(0,s);
     }
 
     public int f(int idx, String s){
@@ -56,5 +57,28 @@ class Solution {
         }
 
         return dp[0];
+    }
+
+    public int fTabulationConstantSpace(int idx, String s){
+        int prev = 1;
+        int prev2 = 0;
+        int current = 0;
+        for(int i = s.length() - 1; i >= 0; i--){
+            if(s.charAt(i) == '0')
+                current = 0;
+            else{
+                int plusOne = prev;
+                int plusTwo = 0;
+                if(i < s.length() - 1 && 
+                    (s.charAt(i) == '1' || s.charAt(i) == '2' && s.charAt(i + 1) < '7'))
+                {
+                    plusTwo = prev2;
+                }
+                current = plusOne + plusTwo;
+            }
+            prev2 = prev;
+            prev = current;
+        }
+        return prev;
     }
 }
